@@ -18,6 +18,44 @@
 </details>
 
 <details>
+<summary>BindingResult란?</summary>
+<br>
+BindingResult는 스프링 프레임워크에서 사용되는 인터페이스로, 데이터 바인딩 및 검증 과정에서 발생하는 오류 정보를 담고 있습니다. 주로 폼 데이터를 객체에 바인딩하고 유효성 검사를 수행할 때 사용됩니다.
+
+스프링 MVC에서 클라이언트로부터 전송된 데이터는 컨트롤러의 핸들러 메서드의 매개변수로 전달될 수 있습니다. 이때 데이터를 수신할 객체와 함께 BindingResult 객체를 매개변수로 추가하여 사용합니다. BindingResult는 데이터 바인딩과 관련된 에러 정보를 수집하고 제공합니다.
+
+BindingResult는 다음과 같은 주요 기능을 제공합니다:
+
+데이터 바인딩 오류 확인: 클라이언트로부터 전송된 데이터를 해당 객체에 바인딩하는 과정에서 발생한 오류를 확인할 수 있습니다. 예를 들어, 데이터 형식이 맞지 않거나 필수 필드가 비어 있는 경우에 발생하는 오류를 확인할 수 있습니다.
+
+검증 오류 확인: 유효성 검사(Validation) 과정에서 발생한 오류 정보를 확인할 수 있습니다. 스프링은 @Valid 어노테이션과 함께 사용하여 객체의 유효성을 검사하며, 검증 결과를 BindingResult 객체에 저장합니다.
+
+BindingResult는 컨트롤러에서 처리 결과를 확인하고, 오류 정보를 적절하게 처리하는 데 사용됩니다. 예를 들어, 오류 정보를 로그에 기록하거나 사용자에게 오류 메시지를 표시하는 등의 작업을 수행할 수 있습니다.
+
+```java
+@PostMapping("/submit-form")
+public String submitForm(@Valid MyFormObject formObject, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        // 데이터 바인딩 또는 검증 과정에서 오류가 발생한 경우 처리
+        // 오류 정보를 확인하고 필요한 로직을 수행
+        return "error-page";
+    }
+    
+    // 오류가 없는 경우 정상적인 처리 수행
+    // ...
+    return "success-page";
+}
+```
+위의 코드에서 BindingResult 객체인 bindingResult를 사용하여 데이터 바인딩 또는 검증 과정에서 발생한 오류를 확인하고 처리할 수 있습니다.
+</details>
+
+<details>
+<summary>궁금증</summary>
+<br>
+적어보기
+</details>
+
+<details>
 <summary>궁금증</summary>
 <br>
 적어보기
